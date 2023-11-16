@@ -12,6 +12,19 @@ const app = express();
 //BodyParser Middleware
 app.use(express.json());
 
+
+// Connexion à la base données
+mongoose.connect(process.env.DATABASECLOUD,{
+    useNewUrlParser: true,
+    useUnifiedTopology: true
+    })
+    .then(() => {console.log("Connexion à la base de données réussie");
+    }).catch(err => {
+    console.log('Impossible de se connecter à la base de données', err);
+    process.exit();
+    });
+
+/*
 mongoose.set('strictQuery', true)
 const connect = async () => {
     try {
@@ -21,6 +34,7 @@ const connect = async () => {
     throw error;
     }
     };
+*/
     mongoose.connection.on("disconnected", () => {
     console.log("mongoDB disconnected!");
     });
