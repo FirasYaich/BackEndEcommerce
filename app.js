@@ -4,13 +4,14 @@ const dotenv =require('dotenv');
 const categorieRouter=require("./routes/categorie.route")
 const scategorieRouter=require("./routes/scategorie.route")
 const articleRouter=require("./routes/article.route")
-//const cors = require('cors')
+const cors = require('cors')
 dotenv.config()
 const app = express();
 //Les cors
 //app.use(cors())
 //BodyParser Middleware
 app.use(express.json());
+app.use(cors())
 
 
 // Connexion à la base données
